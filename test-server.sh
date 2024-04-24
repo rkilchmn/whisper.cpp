@@ -1,0 +1,2 @@
+#!/bin/sh
+curl http://127.0.0.1:8080/inference/audio/transcriptions -H "Content-Type: multipart/form-data" -F file="@/home/roger/projects/whisper.cpp/samples/jfk.wav" -F temperature="0.0" -F temperature_inc="0.2" -F response_format="json"

@@ -60,3 +60,7 @@ cmake-build-debug/
 .cxx/
 .gradle/
 local.properties
+
+models/openvino_conv_env/*
+models/*-cache/*
+models/ggml-*

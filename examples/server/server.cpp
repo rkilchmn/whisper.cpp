@@ -593,7 +593,7 @@ int main(int argc, char ** argv) {
 
         <h2>/inference</h2>
         <pre>
-    curl 127.0.0.1:)" + std::to_string(sparams.port) + R"(/inference \
+    curl 127.0.0.1:)" + std::to_string(sparams.port) + R"(/inference/audio/transcriptions \
     -H "Content-Type: multipart/form-data" \
     -F file="@&lt;file-path&gt;" \
     -F temperature="0.0" \
@@ -610,7 +610,7 @@ int main(int argc, char ** argv) {
 
         <div>
             <h2>Try it out</h2>
-            <form action="/inference" method="POST" enctype="multipart/form-data">
+            <form action="/inference/audio/transcriptions" method="POST" enctype="multipart/form-data">
                 <label for="file">Choose an audio file:</label>
                 <input type="file" id="file" name="file" accept="audio/*" required><br>
 
@@ -642,10 +642,10 @@ int main(int argc, char ** argv) {
         return false;
     });
 
-    svr.Options(sparams.request_path + "/inference", [&](const Request &, Response &){
+    svr.Options(sparams.request_path + "/inference/audio/transcriptions", [&](const Request &, Response &){
     });
 
-    svr.Post(sparams.request_path + "/inference", [&](const Request &req, Response &res){
+    svr.Post(sparams.request_path + "/inference/audio/transcriptions", [&](const Request &req, Response &res){
         // acquire whisper model mutex lock
         std::lock_guard<std::mutex> lock(whisper_mutex);
 
